@@ -1,0 +1,23 @@
+<div *ngIf="olympics$ | async as olympics; else loadingOlympics">
+  <h1>Medals per Country</h1>
+  <div>
+    <h2>Number of JO: {{ numberOfJo$ | async }}</h2>
+    <h2>Number of Countries: {{ numberOfCountries$ | async }}</h2>
+  </div>
+  <div class="chart-container">
+    <ngx-charts-pie-chart
+      [view]="view"
+      [scheme]="'cool'"
+      [results]="chartData$ | async"
+      [labels]="showLabels"
+      [legend]="false"
+      [doughnut]="isDoughnut"
+      (select)="onSelect($event)"> <!-- 🔹 Ajout d'un clic pour rediriger -->
+    </ngx-charts-pie-chart>
+  </div>
+</div>
+
+<!-- Template de chargement des olympics -->
+<ng-template #loadingOlympics>
+  <p>Chargement des données...</p>
+</ng-template>

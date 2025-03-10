@@ -1,0 +1,13 @@
+<div *ngIf="country; else loading">
+  <h1>{{ country?.country }} - Détails</h1>
+  <p>Nombre de médailles : {{ totalMedals }}</p>
+  <ul>
+    <li *ngFor="let participation of country?.participations">
+      {{ participation.year }} - {{ participation.city }} - Médailles : {{ participation.medalsCount }}
+    </li>
+  </ul>
+</div>
+
+<ng-template #loading>
+  <p>Chargement des données...</p>
+</ng-template>

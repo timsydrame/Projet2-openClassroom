@@ -34,4 +34,13 @@ export class OlympicService {
       ? country.participations.reduce((sum, p) => sum + p.medalsCount, 0)
       : 0;
   }
+  /** Calcule du nombre de participations aux JO */
+  getTotalParticipations(country: OlympicCountry): number {
+    return country.participations.length;
+  }
+
+  /** Calcule du nombre total d'athlètes présentés aux JO */
+  getTotalAthletes(country: OlympicCountry): number {
+    return country.participations.reduce((sum, p) => sum + p.athleteCount, 0);
+  }
 }

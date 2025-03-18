@@ -1,11 +1,38 @@
 <div *ngIf="country; else loading">
+  <button (click)="onBack()"><i class="fa fa-arrow-left"></i>☜☜Retour</button>
   <h1>{{ country?.country }} - Détails</h1>
-  <p>Nombre de médailles : {{ totalMedals }}</p>
-  <ul>
+  <div class="medals-info">
+  <h2>Nombre de participations aux JO : {{ totalParticipations }}</h2>
+  <h2>Nombre total de médailles obtenues : {{ totalMedals }}</h2>
+  <h2>Nombre total d'athlètes présentés aux JO : {{ totalAthletes }}</h2>
+  </div>
+  <!-- <ul>
     <li *ngFor="let participation of country?.participations">
       {{ participation.year }} - {{ participation.city }} - Médailles : {{ participation.medalsCount }}
     </li>
-  </ul>
+  </ul> -->
+
+  <!-- Affichage du graphique sous forme de ligne -->
+  <div class="chart-container">
+    <ngx-charts-line-chart
+      [view]="[700, 400]"
+      [results]="lineChartData"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [scheme]="'cool'"
+      [yScaleMin]="yScaleMin"
+      [yScaleMax]="yScaleMax"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisTickFormatting]="xAxisTickFormatting"
+      [yAxisTickFormatting]="yAxisTickFormatting"
+      [animations]="animations"
+      [autoScale]="true"
+    >
+    </ngx-charts-line-chart>
+  </div>
 </div>
 
 <ng-template #loading>

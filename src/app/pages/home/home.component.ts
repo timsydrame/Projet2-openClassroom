@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   public numberOfCountries$!: Observable<number>;
   public numberOfJo$!: Observable<number>;
 
-  public showLegend = false; // Désactiver la légende comme demandé
+  public showLegend = false;
   public showLabels = true;
   public isDoughnut = false;
 
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
 
     this.olympicService.getOlympics().subscribe((olympics) => {
       const selectedCountry = olympics.find(
-        (country:OlympicCountry) => country.country === event.name
+        (country: OlympicCountry) => country.country === event.name
       );
       if (selectedCountry) {
         this.router.navigate([`/detail/${selectedCountry.id}`]);

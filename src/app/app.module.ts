@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // <-- Ajouter cette ligne
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NgxChartsModule } from '@swimlane/ngx-charts'; // 👈 Ajoute cette ligne
-import { HttpClientModule } from '@angular/common/http'; // 👈 Ajoute ceci si ton service fait des requêtes HTTP
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,9 +24,10 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule, // <-- Ajouter cette ligne pour activer les animations
     RouterModule.forRoot(routes),
-    NgxChartsModule, // 👈 Ajoute ceci
-    HttpClientModule, // 👈 Ajoute ceci si ton service utilise HttpClient
+    NgxChartsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

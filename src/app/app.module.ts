@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http'; // 👈 Ajoute ceci si 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'details/:country', component: DetailComponent },
+  { path: 'detail/:id', component: DetailComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

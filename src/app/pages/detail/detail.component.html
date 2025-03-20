@@ -1,11 +1,10 @@
 <div *ngIf="country; else loading">
   <button (click)="onBack()"><i class="fa fa-arrow-left"></i>☜☜Retour</button>
-  <h1>{{ country?.country }} - Détails</h1>
-  <div class="medals-info">
-  <h2>Nombre de participations aux JO : {{ totalParticipations }}</h2>
-  <h2>Nombre total de médailles obtenues : {{ totalMedals }}</h2>
-  <h2>Nombre total d'athlètes présentés aux JO : {{ totalAthletes }}</h2>
-  </div>
+  <app-indicators 
+  [title]="country?.country + ' - Détails'" 
+  [indicators]="detailIndicators">
+</app-indicators>
+
   <!-- <ul>
     <li *ngFor="let participation of country?.participations">
       {{ participation.year }} - {{ participation.city }} - Médailles : {{ participation.medalsCount }}

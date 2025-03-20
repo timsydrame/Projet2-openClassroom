@@ -69,4 +69,7 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+  formatLabel(value: string): string {
+    return `<span style="font-size: 18px; font-weight: bold;">${value}</span>`;
+  }
 }

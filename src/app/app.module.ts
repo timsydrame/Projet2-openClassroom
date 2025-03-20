@@ -8,7 +8,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpClientModule } from '@angular/common/http';
-
+import { IndicatorsComponent } from './components/indicators/indicators.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'detail/:id', component: DetailComponent },
@@ -18,6 +18,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    IndicatorsComponent,
     HomeComponent,
     DetailComponent,
     NotFoundComponent,

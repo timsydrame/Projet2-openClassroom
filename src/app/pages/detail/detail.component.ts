@@ -27,6 +27,7 @@ export class DetailComponent implements OnInit {
   public timeline: boolean = true;
   public yScaleMin!: number;
   public yScaleMax!: number;
+  public detailIndicators: { label: string; value: number }[] = [];
 
   constructor(
     private olympicService: OlympicService,
@@ -50,6 +51,22 @@ export class DetailComponent implements OnInit {
           this.totalAthletes = this.olympicService.getTotalAthletes(
             this.country
           );
+
+          // Initialiser detailIndicators
+          this.detailIndicators = [
+            {
+              label: 'Number of entries ',
+              value: this.totalParticipations,
+            },
+            {
+              label: 'Total number medals',
+              value: this.totalMedals,
+            },
+            {
+              label: " Total number of athlètes ",
+              value: this.totalAthletes,
+            },
+          ];
           // Organiser les données pour le graphique
           this.lineChartData = [
             {

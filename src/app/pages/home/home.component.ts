@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { map } from 'rxjs/operators';
@@ -13,16 +13,17 @@ import { Router } from '@angular/router'; // Ajout du Router pour la navigation
 export class HomeComponent implements OnInit {
   public olympics$: Observable<OlympicCountry[]> = of([]);
   public chartData$: Observable<{ name: string; value: number }[]> = of([]); // Observable pour les données du graphique
-  public view: [number, number] = [700, 400];
-
   public numberOfCountries$!: Observable<number>;
   public numberOfJo$!: Observable<number>;
 
   public showLegend = false;
   public showLabels = true;
   public isDoughnut = false;
+  public view: [number, number] = [700, 400]; // Initialisation par défaut
 
-  constructor(private olympicService: OlympicService, private router: Router) {}
+  constructor(private olympicService: OlympicService, private router: Router) {
+    this.updateView();
+  }
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
@@ -69,7 +70,19 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-  formatLabel(value: string): string {
-    return `<span style="font-size: 18px; font-weight: bold;">${value}</span>`;
+  // Ajuster la taille du graphique en fonction de l'écran
+  updateView() {
+    if (window.innerWidth < 768) {
+      this.view = [400, 300]; // Mobile
+    } else if (window.innerWidth < 1024) {
+      this.view = [600, 500]; // Tablette
+    } else {
+      this.view = [800, 400]; // Grand écran
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.updateView();
   }
 }

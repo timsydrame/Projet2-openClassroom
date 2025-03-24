@@ -1,11 +1,12 @@
 <div *ngIf="olympics$ | async as olympics; else loadingOlympics">
   <app-indicators
-  [title]="'Medals per Country'"
-  [indicators]="[
-    { label: 'Number of JO ', value: (numberOfJo$ | async) || 0 },
-    { label: 'Number of Countries', value: (numberOfCountries$ | async) || 0 }
-  ]">
-</app-indicators>
+    [title]="'Medals per Country'"
+    [indicators]="[
+      { label: 'Number of JO ', value: (numberOfJo$ | async) || 0 },
+      { label: 'Number of Countries', value: (numberOfCountries$ | async) || 0 }
+    ]"
+  >
+  </app-indicators>
 
   <div class="chart-container">
     <ngx-charts-pie-chart
@@ -15,7 +16,9 @@
       [labels]="showLabels"
       [legend]="false"
       [doughnut]="isDoughnut"
-      (select)="onSelect($event)"> <!-- 🔹 Ajout d'un clic pour rediriger -->
+      (select)="onSelect($event)"
+    >
+      <!-- 🔹 Ajout d'un clic pour rediriger -->
     </ngx-charts-pie-chart>
   </div>
 </div>

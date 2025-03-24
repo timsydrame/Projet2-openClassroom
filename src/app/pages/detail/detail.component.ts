@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { OlympicCountry } from 'src/app/core/models/Olympic';
-import { LineChart } from 'src/app/core/models/LineChart';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -14,7 +13,7 @@ export class DetailComponent implements OnInit {
   public totalParticipations: number = 0;
   public totalAthletes: number = 0;
   public lineChartData: any[] = [];
-  public view: [number, number] = [700, 400];
+  public view: [number, number] = [700, 400]; // Taille du graphique
   public showLegend = false;
   public showLabels = true;
   public animations: boolean = true;
@@ -63,7 +62,7 @@ export class DetailComponent implements OnInit {
               value: this.totalMedals,
             },
             {
-              label: " Total number of athlètes ",
+              label: ' Total number of athlètes ',
               value: this.totalAthletes,
             },
           ];
@@ -98,6 +97,25 @@ export class DetailComponent implements OnInit {
     }
   }
 
+  // Ajuster la taille du graphique en fonction de l'écran
+  updateView() {
+    const width = window.innerWidth;
+
+    if (width < 480) {
+      this.view = [width - 20, 250]; // Mobile : taille dynamique avec un petit padding
+    } else if (width < 768) {
+      this.view = [width - 50, 300]; // Tablette : largeur ajustée
+    } else if (width <= 1024) {
+      this.view = [600, 500]; // Tablette et petits écrans de bureau
+    } else {
+      this.view = [800, 400]; // Grand écran
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.updateView();
+  }
   xAxisTickFormatting = (tick: number | string): string => {
     if (!this.country || !this.country.participations) {
       return ''; // Si country est undefined, on retourne une chaîne vide

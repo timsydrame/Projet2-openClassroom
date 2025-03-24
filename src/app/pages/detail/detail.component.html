@@ -1,15 +1,10 @@
 <div *ngIf="country; else loading">
-  <button (click)="onBack()"><i class="fa fa-arrow-left"></i>☜☜Retour</button>
-  <app-indicators 
-  [title]="country?.country + ' - Détails'" 
-  [indicators]="detailIndicators">
-</app-indicators>
-
-  <!-- <ul>
-    <li *ngFor="let participation of country?.participations">
-      {{ participation.year }} - {{ participation.city }} - Médailles : {{ participation.medalsCount }}
-    </li>
-  </ul> -->
+  <button class="back-button" (click)="onBack()">☜↩☜☜ Retour</button>
+  <app-indicators
+    [title]="country?.country + ' - Détails'"
+    [indicators]="detailIndicators"
+  >
+  </app-indicators>
 
   <!-- Affichage du graphique sous forme de ligne -->
   <div class="chart-container">

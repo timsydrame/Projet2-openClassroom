@@ -1,6 +1,7 @@
 <h1>{{ title }}</h1>
-<div class="medals-info">
+<div class="medals-info" [ngClass]="{ 'two-h2': indicators.length === 2, 'three-h2': indicators.length === 3 }">
   <h2 *ngFor="let indicator of indicators">
-    {{ indicator.label }} : <span class="bold-text">{{ indicator.value }}</span>
+    {{ indicator.label }} : <p class="bold-text">{{ indicator.value }}</p>
   </h2>
 </div>
+

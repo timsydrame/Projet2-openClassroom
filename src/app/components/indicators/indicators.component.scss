@@ -1,0 +1,86 @@
+/* Styles généraux */
+h1 {
+  width: 50%;
+  background-color: rgb(0 128 120 / 75%);
+  color: white;
+  text-align: center;
+  padding: 8px;
+  border-radius: 10px;
+  margin: 20px auto; /* Centre le titre horizontalement */
+}
+
+/* Réduction de la largeur lorsque plusieurs H2 sont présents */
+.medals-info.two-h2 {
+  width: 45%;
+}
+.medals-info.three-h2 {
+  width: 65%;
+}
+
+.medals-info {
+  display: flex;
+  justify-content: space-between; /* Espace entre les h2 */
+  align-items: center;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.medals-info h2 {
+  width: auto;
+  height: 80px;
+  text-align: center;
+  border: 2px solid rgb(0 128 120 / 75%);
+  border-radius: 10px;
+  color: #6a5757fc;
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+.bold-text {
+  font-weight: bold;
+  color: black;
+    margin-top: 5px;
+    font-size: 1.5;
+}
+
+/* Adaptation pour les tablettes et les petits écrans */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .medals-info {
+    flex-direction: column;
+    width: 95%;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+    .medals-info.two-h2 {
+    width: 70%;
+  }
+
+  .medals-info.three-h2 {
+    width: 82%;
+  }
+}
+
+@media (max-width: 767px) {
+    h1 {
+    width: 90%; /* Augmente la largeur sur les petits écrans */
+    padding: 15px;
+    margin: 15px auto;
+    font-size: 2rem;
+  }
+  .medals-info {
+    flex-direction: column;
+    width: 90%;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .medals-info.two-h2 {
+    width: 70%;
+  }
+
+  .medals-info.three-h2 {
+    width: 60%;
+  }
+}

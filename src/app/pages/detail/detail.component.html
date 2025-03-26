@@ -1,5 +1,6 @@
-<div *ngIf="country; else loading">
-  <button class="back-button" (click)="onBack()">☜↩☜☜ Retour</button>
+<ng-container *ngIf="country; else loading">
+  <button class="back-button" (click)="onBack()">⬅ Retour</button>
+
   <app-indicators
     [title]="country?.country + ' - Détails'"
     [indicators]="detailIndicators"
@@ -9,7 +10,7 @@
   <!-- Affichage du graphique sous forme de ligne -->
   <div class="chart-container">
     <ngx-charts-line-chart
-      [view]="[700, 400]"
+      [view]="view"
       [results]="lineChartData"
       [xAxis]="xAxis"
       [yAxis]="yAxis"
@@ -27,8 +28,9 @@
     >
     </ngx-charts-line-chart>
   </div>
-</div>
+</ng-container>
 
+<!-- Template de chargement -->
 <ng-template #loading>
   <p>Chargement des données...</p>
 </ng-template>
